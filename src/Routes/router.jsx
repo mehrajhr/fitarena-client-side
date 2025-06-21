@@ -5,6 +5,9 @@ import Home from '../Pages/Home';
 import Login from '../Pages/Login';
 import Register from '../Pages/Register';
 import AllEvents from '../Pages/AllEvents';
+import Contact from '../Pages/Contact';
+import AboutUs from '../Pages/AboutUs';
+import FAQ from '../Pages/FAQ';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +21,18 @@ const router = createBrowserRouter([
         {
           path: '/events/all',
           Component: AllEvents
+        },
+        {
+          path: '/contact',
+          Component: Contact
+        },
+        {
+          path: '/aboutus',
+          Component: AboutUs
+        },
+        {
+          path: '/faq',
+          Component: FAQ
         },
         {
             path: '/login',
