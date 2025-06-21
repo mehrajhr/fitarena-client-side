@@ -1,0 +1,10 @@
+li a{
+    color: rgb(8, 4, 82);
+    font-size: 20px;
+}
+
+
+li a.active {
+    color: red;
+    font-weight: bold;
+}
