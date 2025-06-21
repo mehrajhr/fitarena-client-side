@@ -61,7 +61,7 @@ const Slider = () => {
   return (
     <Slide {...properties} autoplay={true} duration={4000} arrows={true}>
       {slides.map((slide, idx) => (
-        <div key={idx} className="p-10 pb-16 bg-[#251d64] flex justify-between items-center">
+        <div key={idx} className="md:p-10 gap-10 md:pb-16 bg-[#251d64] flex flex-col md:flex-row justify-between items-center">
           <div className="flex-1 flex gap-10">
             <img
               src={slide.logo}
@@ -79,7 +79,7 @@ const Slider = () => {
               </Link>
             </div>
           </div>
-          <div className="flex justify-center items-center gap-0 join">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-5 md:gap-0 join">
             <div className="relative w-[150px] h-[220px] overflow-hidden rounded-tr-[90px]">
               <img
                 src={slide.playerImg}
@@ -87,9 +87,9 @@ const Slider = () => {
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="p-5 border-t border-b border-r border-orange-700 w-sm">
-              <h1 className="text-white font-bold text-xl">Event:</h1>
-              <p className="text-white">
+            <div className="p-5  md:border-t md:border-b md:border-r border-orange-700 w-sm">
+              <h1 className="text-white text-center md:text-left font-bold text-xl">Event:</h1>
+              <p className="text-white text-center md:text-left">
                 {slide.description}
               </p>
             </div>
