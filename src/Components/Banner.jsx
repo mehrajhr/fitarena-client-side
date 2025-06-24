@@ -9,19 +9,19 @@ const Banner = () => {
       <div className="flex-1 grid grid-cols-3 grid-rows-1 gap-4">
         <div className="col-span-1 flex flex-col gap-4">
           <img
-            className="w-full h-full object-cover"
+            className="w-full rounded-md  h-full object-cover"
             src={image1}
             alt="image1"
           />
           <img
-            className="w-full h-full object-cover"
+            className="w-full rounded-md h-full object-cover"
             src={image2}
             alt="imgage2"
           />
         </div>
         <div className="col-span-2">
           <img
-            className="object-cover w-full h-full"
+            className="object-cover w-full rounded-md h-full"
             src={image3}
             alt="image3"
           />

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router";
+import Stat from "../Components/Stat";
 
 const AboutUs = () => {
   return (
@@ -11,7 +12,7 @@ const AboutUs = () => {
           Connecting athletes and sports enthusiasts with local events,
           competitions, and challenges.
         </p>
-
+        <Stat></Stat>
         {/* Content Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Left Side - Mission */}
