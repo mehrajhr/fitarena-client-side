@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
+import { motion, scale } from "motion/react";
 
 const Slider = () => {
   const buttonStyle = {
@@ -59,40 +60,67 @@ const Slider = () => {
   ];
 
   return (
-    <Slide {...properties} autoplay={true} duration={4000} arrows={true}>
+    <Slide {...properties} autoplay={false} duration={4000} arrows={true}>
       {slides.map((slide, idx) => (
-        <div key={idx} className="md:p-10 gap-10 md:pb-16 bg-[#251d64] flex flex-col md:flex-row justify-between items-center">
+        <div
+          key={idx}
+          className="md:p-10 gap-10 md:pb-16 bg-[#251d64] flex flex-col md:flex-row justify-between items-center"
+        >
           <div className="flex-1 flex gap-10">
-            <img
+            <motion.img
+              animate={{
+                scale: [1, 2, 2, 1, 1],
+                rotate: [0, 0, 180, 180, 0],
+                borderRadius: ["100%", "100%", "100%", "100%", "100%"],
+              }}
+              transition={{
+                duration: 2,
+                ease: "easeInOut",
+                times: [0, 0.2, 0.5, 0.8, 1],
+                repeat: Infinity,
+                repeatDelay: 1,
+              }}
               src={slide.logo}
               className="w-24 h-24 rounded-full"
               alt=""
             />
             <div>
-              <h1 className="text-3xl font-bold text-white">
-               {slide.title}
-              </h1>
+              <h1 className="text-3xl font-bold text-white">{slide.title}</h1>
               <Link to="/events/all">
-                <button className="btn mt-5 btn-dash btn-warning">
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="btn mt-5 btn-dash btn-warning"
+                >
                   Book A Event
-                </button>
+                </motion.button>
               </Link>
             </div>
           </div>
           <div className="flex flex-col md:flex-row justify-center items-center gap-5 md:gap-0 join">
-            <div className="relative w-[150px] h-[220px] overflow-hidden rounded-tr-[90px]">
+            <motion.div animate={{
+              x: [0 , -50 , 0],
+              transition : {duration: 4 , repeat : Infinity}
+            }} className="relative w-[150px] h-[220px] overflow-hidden rounded-tr-[90px]">
               <img
                 src={slide.playerImg}
                 alt="Player"
                 className="w-full h-full object-cover"
               />
-            </div>
-            <div className="p-5  md:border-t md:border-b md:border-r border-orange-700 w-sm">
-              <h1 className="text-white text-center md:text-left font-bold text-xl">Event:</h1>
+            </motion.div>
+            <motion.div animate={
+              {
+                x:[0, 50, 0],
+                transition: { duration: 4 , repeat: Infinity}
+              }
+            } className="p-5  md:border-t md:border-b md:border-r border-orange-700 w-sm">
+              <h1 className="text-white text-center md:text-left font-bold text-xl">
+                Event:
+              </h1>
               <p className="text-white text-center md:text-left">
                 {slide.description}
               </p>
-            </div>
+            </motion.div>
           </div>
         </div>
       ))}

@@ -16,7 +16,7 @@ const PopularSports = () => {
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {sports.map((sport, index) => (
-            <div key={index} className="text-center">
+            <div key={index} className="text-center my-6">
               <img
                 src={sport.image}
                 alt={sport.name}

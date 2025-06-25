@@ -1,4 +1,5 @@
 import React from "react";
+import { motion, scale } from "motion/react"
 
 const Testimonials = () => {
   const reviews = [
@@ -30,13 +31,13 @@ const Testimonials = () => {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {reviews.map((review, i) => (
-            <div key={i} className="bg-white p-6 rounded shadow-md">
+            <motion.div initial = {{scale : 0}} animate = {{ scale : 1 , transition : {duration : 4}}} key={i} className="bg-white p-6 rounded shadow-md">
               <p className="text-gray-700 italic">“{review.feedback}”</p>
               <div className="mt-4 text-left">
                 <h4 className="font-bold text-[#251d64]">{review.name}</h4>
                 <p className="text-sm text-gray-500">{review.role}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
