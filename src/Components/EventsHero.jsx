@@ -5,7 +5,7 @@ import MagneticButton from "./MagneticButton";
 
 const EventsHero = () => {
   const [text] = useTypewriter({
-    words: ["Explore upcoming"],
+    words: ["Explore Upcoming"],
     loop: true,
     typeSpeed: 70,
     deleteSpeed: 50,
@@ -27,8 +27,8 @@ const EventsHero = () => {
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
         <h1 className="text-3xl my-5 md:text-5xl font-extrabold text-center">
           <span className="text-[#251D64]">{text}</span>
-          {text === "Explore upcoming" && (
-            <span className="text-orange-500">&nbsp;athletic events</span>
+          {text === "Explore Upcoming" && (
+            <span className="text-orange-500">&nbsp;Athletic Events</span>
           )}
           <Cursor />
         </h1>
