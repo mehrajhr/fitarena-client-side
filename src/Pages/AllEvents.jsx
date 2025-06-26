@@ -6,7 +6,7 @@ import axios from "axios";
 const AllEvents = () => {
   const [events, setEvents] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:5000/all/events").then((res) => {
+    axios.get("http://localhost:5000/events/all").then((res) => {
       setEvents(res.data);
     });
   }, []);

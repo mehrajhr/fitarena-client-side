@@ -64,12 +64,12 @@ const Slider = () => {
       {slides.map((slide, idx) => (
         <div
           key={idx}
-          className="md:p-10 gap-10 md:pb-16 bg-[#251d64] flex flex-col md:flex-row justify-between items-center"
+          className="pt-5 lg:p-10 gap-10 lg:pb-16 bg-[#251d64] flex flex-col md:flex-row justify-between items-center"
         >
           <div className="flex-1 flex gap-10">
             <motion.img
               animate={{
-                scale: [1, 2, 2, 1, 1],
+                scale: [1, 1.5, 1.5, 1, 1],
                 rotate: [0, 0, 180, 180, 0],
                 borderRadius: ["100%", "100%", "100%", "100%", "100%"],
               }}
@@ -97,7 +97,7 @@ const Slider = () => {
               </Link>
             </div>
           </div>
-          <div className="flex flex-col md:flex-row justify-center items-center gap-5 md:gap-0 join">
+          <div className="flex flex-col lg:flex-row justify-center items-center gap-5 lg:gap-0 join">
             <motion.div animate={{
               x: [0 , -50 , 0],
               transition : {duration: 4 , repeat : Infinity}
@@ -113,11 +113,11 @@ const Slider = () => {
                 x:[0, 50, 0],
                 transition: { duration: 4 , repeat: Infinity}
               }
-            } className="p-5  md:border-t md:border-b md:border-r border-orange-700 w-sm">
+            } className="p-5  lg:border-t lg:border-b lg:border-r border-orange-700 w-sm">
               <h1 className="text-white text-center md:text-left font-bold text-xl">
                 Event:
               </h1>
-              <p className="text-white text-center md:text-left">
+              <p className="text-white text-center lg:text-left">
                 {slide.description}
               </p>
             </motion.div>

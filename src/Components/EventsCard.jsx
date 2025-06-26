@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router";
+import { motion, scale} from "motion/react";
 
 const EventsCard = ({ event }) => {
   return (
-    <div className="bg-white shadow-md rounded-md overflow-hidden hover:shadow-xl transition">
+    <motion.div whileHover={{scale: 1.08}} className="bg-white shadow-md rounded-md overflow-hidden">
       <img
         src={event.image}
         alt="Event Banner"
@@ -23,11 +24,11 @@ const EventsCard = ({ event }) => {
         <div className="mt-4 flex justify-between items-center">
           <p className="text-sm text-gray-500 italic">by {event.creatorName}</p>
           <Link to={`/event/${event.id}`}>
-            <button className="btn btn-sm btn-warning">View Details</button>
+            <motion.button whileHover = {{scale : 1.1}} whileTap = {{ scale : 0.95}} className="btn text-white bg-orange-600">View Details</motion.button>
           </Link>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

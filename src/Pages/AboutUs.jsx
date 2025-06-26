@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 import Stat from "../Components/Stat";
+import { motion} from "motion/react";
 
 const AboutUs = () => {
   return (
@@ -46,9 +47,11 @@ const AboutUs = () => {
           <p className="mb-4 text-gray-500">
             Join FitArena and experience the thrill of local sports!
           </p>
-          <Link to='/events/all' className="btn btn-primary">
+          <motion.button whileHover = {{scale : 1.1}} whileTap = {{ scale : 0.95}}>
+            <Link to='/events/all' className="btn btn-primary">
             Explore Events
           </Link>
+          </motion.button>
         </div>
       </div>
     </div>
