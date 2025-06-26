@@ -8,6 +8,10 @@ import AllEvents from '../Pages/AllEvents';
 import Contact from '../Pages/Contact';
 import AboutUs from '../Pages/AboutUs';
 import FAQ from '../Pages/FAQ';
+import PrivateRouts from '../Layouts/PrivateRouts.jsx';
+import CreateEvent from '../Pages/CreateEvent.jsx';
+import MyBooking from '../Pages/MyBooking.jsx';
+import ManageEvents from '../Pages/ManageEvents.jsx';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +25,18 @@ const router = createBrowserRouter([
         {
           path: '/events/all',
           Component: AllEvents
+        },
+        {
+          path: '/create-event',
+          element : <PrivateRouts><CreateEvent></CreateEvent></PrivateRouts>
+        },
+        {
+          path: '/myBookings',
+          element : <PrivateRouts><MyBooking></MyBooking></PrivateRouts>
+        },
+        {
+          path: '/manageEvents',
+          element : <PrivateRouts><ManageEvents></ManageEvents></PrivateRouts>
         },
         {
           path: '/contact',

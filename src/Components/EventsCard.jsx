@@ -4,7 +4,7 @@ import { motion, scale} from "motion/react";
 
 const EventsCard = ({ event }) => {
   return (
-    <motion.div whileHover={{scale: 1.08}} className="bg-white shadow-md rounded-md overflow-hidden">
+    <motion.div whileHover={{scale: 1.08}} animate={{ scale: 1, transition: { duration: 0.8 } }} className="bg-white shadow-md rounded-md overflow-hidden">
       <img
         src={event.image}
         alt="Event Banner"
