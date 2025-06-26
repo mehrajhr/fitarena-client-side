@@ -23,7 +23,7 @@ const EventsCard = ({ event }) => {
         </p>
         <div className="mt-4 flex justify-between items-center">
           <p className="text-sm text-gray-500 italic">by {event.creatorName}</p>
-          <Link to={`/event/${event.id}`}>
+          <Link to={`/event/${event._id}`}>
             <motion.button whileHover = {{scale : 1.1}} whileTap = {{ scale : 0.95}} className="btn text-white bg-orange-600">View Details</motion.button>
           </Link>
         </div>

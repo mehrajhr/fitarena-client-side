@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import UseAuth from "../Hooks/UseAuth";
 import { motion, scale } from "motion/react";
 import axios from "axios";
@@ -20,7 +20,7 @@ const CreateEvent = () => {
             Swal.fire({
               position: "top-end",
               icon: "success",
-              title: "Your work has been saved",
+              title: "Create Event Successfully!",
               showConfirmButton: false,
               timer: 1500,
             });
