@@ -5,15 +5,19 @@ import { MdLocationPin } from "react-icons/md";
 import axios from "axios";
 import UseAuth from "../Hooks/UseAuth";
 
-const ManageEventCard = ({event}) => {
-    const {user} = UseAuth();
-    const [participants , setParticipants] = useState([]);
-    useEffect(()=>{
-        axios.get(`http://localhost:5000/events/participants?email=${user.email}&id=${event._id}`)
-        .then(res => {
-            setParticipants(res.data);
-        })
-    },[user, event])
+const ManageEventCard = ({ handleDelete , event }) => {
+  const { user } = UseAuth();
+  const [participants, setParticipants] = useState([]);
+  useEffect(() => {
+    axios
+      .get(
+        `http://localhost:5000/events/participants?email=${user.email}&id=${event._id}`
+      )
+      .then((res) => {
+        setParticipants(res.data);
+      });
+  }, [user, event]);
+
   return (
     <div className="bg-white shadow-md rounded-2xl p-5 flex flex-col justify-between">
       <div>
@@ -28,15 +32,19 @@ const ManageEventCard = ({event}) => {
           <MdOutlineDateRange />{" "}
           {new Date(event?.eventDate).toLocaleDateString()}
         </p>
-        <p className="text-gray-500 text-sm mb-1 flex items-center gap-1"><MdLocationPin /> {event?.location}</p>
-        <p className='text-gray-500 text-sm mb-1 '>Participant : {participants?.length}</p>
+        <p className="text-gray-500 text-sm mb-1 flex items-center gap-1">
+          <MdLocationPin /> {event?.location}
+        </p>
+        <p className="text-gray-500 text-sm mb-1 ">
+          Participant : {participants?.length}
+        </p>
       </div>
 
       <div className="mt-4 flex gap-3">
         <Link to={`/update-event/${event._id}`}>
           <button className="btn btn-sm btn-info">Edit</button>
         </Link>
-        <button className="btn btn-sm btn-error">Delete</button>
+        <button onClick={() => {handleDelete(`${event._id}`)}} className="btn btn-sm btn-error">Delete</button>
       </div>
     </div>
   );
