@@ -9,7 +9,7 @@ const PrivateRouts = ({children}) => {
         return <Loading></Loading>
     }
     if(user){
-        return children
+        return children;
     }
    else{
     return <Navigate to='/login'></Navigate>

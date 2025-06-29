@@ -3,17 +3,18 @@ import React, { useEffect, useState } from "react";
 import UseAuth from "../Hooks/UseAuth";
 import ManageEventCard from "./ManageEventCard";
 import Swal from "sweetalert2";
+import UseAxiosSecure from "../Hooks/UseAxiosSecure";
 
 const ManageEvents = () => {
   const { user } = UseAuth();
   const [events, setEvents] = useState([]);
+  const axiosSecure = UseAxiosSecure();
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/events/manage?email=${user.email}`)
+    axiosSecure.get(`events/manage?email=${user.email}`)
       .then((res) => {
         setEvents(res.data);
       });
-  }, [user]);
+  }, [user , axiosSecure]);
 
   const handleDelete = (id) => {
     Swal.fire({

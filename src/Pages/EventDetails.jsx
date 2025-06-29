@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLoaderData } from "react-router";
+import { useLoaderData, useParams } from "react-router";
 import { motion, scale } from "motion/react";
 import { CiLocationOn } from "react-icons/ci";
 import { MdOutlineDateRange } from "react-icons/md";
@@ -7,16 +7,26 @@ import MagneticButton from "../Components/MagneticButton";
 import UseAuth from "../Hooks/UseAuth";
 import axios from "axios";
 import Swal from "sweetalert2";
+import UseAxiosSecure from "../Hooks/UseAxiosSecure";
 
 const EventDetails = () => {
-  const event = useLoaderData();
+  const [event , setEvent] = useState({});
+  const {id} = useParams();
+  const axiosSecue = UseAxiosSecure();
   const { user } = UseAuth();
   const [isTrue, setIsTrue] = useState(false);
 
+  useEffect(() =>{
+    axiosSecue.get(`/event/${id}`)
+    .then(res => {
+      setEvent(res.data);
+    })
+  },[id, axiosSecue])
+
   useEffect(() => {
-    axios
+    axiosSecue
       .get(
-        `http://localhost:5000/booking/check?eventId=${event._id}&user_email=${user.email}`
+        `booking/check?eventId=${event._id}&email=${user.email}`
       )
       .then((res) => {
         if (res.data.booked) {
@@ -25,7 +35,7 @@ const EventDetails = () => {
           setIsTrue(false);
         }
       });
-  }, [event, user]);
+  }, [event, user , axiosSecue]);
   const handlBooking = () => {
     const { _id, ...rest } = event;
     const bookingData = {

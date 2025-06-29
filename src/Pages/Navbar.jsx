@@ -6,11 +6,14 @@ import UseAuth from "../Hooks/UseAuth";
 import { CiLogout } from "react-icons/ci";
 
 const Navbar = () => {
-  const { user, logOut } = UseAuth();
+  const { user,setUser, logOut } = UseAuth();
   const [isOpen, setIsOpen] = useState(false);
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => {
+        console.log('user logout successfully');
+        setUser(null);
+      })
       .catch(() => {});
   };
   const links = (

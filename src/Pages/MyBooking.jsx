@@ -5,43 +5,52 @@ import { MdOutlineDateRange } from "react-icons/md";
 import { MdLocationPin } from "react-icons/md";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
+import UseAxiosSecure from "../Hooks/UseAxiosSecure";
 
 const MyBooking = () => {
   const { user } = UseAuth();
   const [bookings, setBookings] = useState([]);
+  const axiosSecure = UseAxiosSecure();
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/booking?email=${user.email}`)
-      .then((res) => {
-        setBookings(res.data);
-      });
-  }, [user]);
+    axiosSecure.get(`booking?email=${user.email}`).then((res) => {
+      setBookings(res.data);
+    });
+  }, [user, axiosSecure]);
 
   const handleCancelBooking = (id, eventId) => {
-    try {
-      axios
-        .delete(
-          `http://localhost:5000/booking?eventId=${eventId}&user_email=${user.email}`
-        )
-        .then((res) => {
-          if (res.data.acknowledged) {
-            Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: "Cancel Booking",
-              showConfirmButton: false,
-              timer: 1500,
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, cancel it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        try {
+          axios
+            .delete(
+              `http://localhost:5000/booking?eventId=${eventId}&user_email=${user.email}`
+            )
+            .then((res) => {
+              if (res.data.acknowledged) {
+                Swal.fire({
+                  title: "Cancel!",
+                  icon: "success",
+                });
+                setBookings(bookings?.filter((booking) => booking?._id !== id));
+              }
             });
-            setBookings(bookings?.filter((booking) => booking?._id !== id));
-          }
-        });
-    } catch {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Something went wrong!",
-      });
-    }
+        } catch {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something went wrong!",
+          });
+        }
+      }
+    });
   };
   return (
     <div className="max-w-6xl bg-base-200 mx-auto px-4 py-12">
@@ -55,7 +64,7 @@ const MyBooking = () => {
         </p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {bookings.map((booking) => (
+          {bookings?.map((booking) => (
             <div key={booking._id} className="card bg-base-100 shadow-sm">
               <figure>
                 <img

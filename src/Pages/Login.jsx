@@ -4,7 +4,7 @@ import UseAuth from "../Hooks/UseAuth";
 import Swal from "sweetalert2";
 
 const Login = () => {
-  const { signWithGoogle, signInEmail } = UseAuth();
+  const { signWithGoogle, signInEmail , setUser} = UseAuth();
   const navigate = useNavigate();
   const handleEmailLogin = (e) => {
     e.preventDefault();
@@ -14,6 +14,7 @@ const Login = () => {
     signInEmail(email, password)
       .then((res) => {
         if (res.user) {
+          setUser(res.user);
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -37,6 +38,7 @@ const Login = () => {
     signWithGoogle()
       .then((res) => {
         if (res.user) {
+          setUser(res.user);
           Swal.fire({
             position: "top-end",
             icon: "success",

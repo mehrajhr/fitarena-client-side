@@ -13,7 +13,6 @@ import CreateEvent from '../Pages/CreateEvent.jsx';
 import MyBooking from '../Pages/MyBooking.jsx';
 import ManageEvents from '../Pages/ManageEvents.jsx';
 import EventDetails from '../Pages/EventDetails.jsx';
-import axios from 'axios';
 import UpdateEvent from '../Pages/UpdateEvent.jsx';
 
 const router = createBrowserRouter([
@@ -32,9 +31,6 @@ const router = createBrowserRouter([
         {
           path: '/event/:id',
           element: <PrivateRouts><EventDetails></EventDetails></PrivateRouts>,
-          loader: ({params}) => {
-            return fetch(`http://localhost:5000/event/${params.id}`).then(res => res.json());
-          }
         },
         {
           path: '/update-event/:id',

@@ -4,16 +4,18 @@ import UseAuth from "../Hooks/UseAuth";
 import { Link, useParams } from "react-router";
 import axios from "axios";
 import Swal from "sweetalert2";
+import UseAxiosSecure from "../Hooks/UseAxiosSecure";
 
 const UpdateEvent = () => {
   const { user } = UseAuth();
   const { id } = useParams();
+  const axiosSecue = UseAxiosSecure();
   const [event, setEvent] = useState([]);
   useEffect(() => {
-    axios.get(`http://localhost:5000/event/${id}`).then((res) => {
+    axiosSecue.get(`event/${id}`).then((res) => {
       setEvent(res.data);
     });
-  }, [id]);
+  }, [id ,axiosSecue]);
 
   const handleUpdate = (e) => {
     e.preventDefault();

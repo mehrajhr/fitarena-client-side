@@ -4,19 +4,21 @@ import { MdOutlineDateRange } from "react-icons/md";
 import { MdLocationPin } from "react-icons/md";
 import axios from "axios";
 import UseAuth from "../Hooks/UseAuth";
+import UseAxiosSecure from "../Hooks/UseAxiosSecure";
 
 const ManageEventCard = ({ handleDelete , event }) => {
   const { user } = UseAuth();
   const [participants, setParticipants] = useState([]);
+  const axiosSecure = UseAxiosSecure();
   useEffect(() => {
-    axios
+    axiosSecure
       .get(
-        `http://localhost:5000/events/participants?email=${user.email}&id=${event._id}`
+        `events/participants?email=${user.email}&id=${event._id}`
       )
       .then((res) => {
         setParticipants(res.data);
       });
-  }, [user, event]);
+  }, [user, event , axiosSecure]);
 
   return (
     <div className="bg-white shadow-md rounded-2xl p-5 flex flex-col justify-between">
