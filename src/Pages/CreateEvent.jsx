@@ -12,9 +12,9 @@ const CreateEvent = () => {
     const form = e.target;
     const formData = new FormData(form);
     const eventData = Object.fromEntries(formData.entries());
-    console.log(eventData);
+    // console.log(eventData);
     try {
-      axios.post("http://localhost:5000/create-event", eventData)
+      axios.post("https://fitarena-server.vercel.app/create-event", eventData)
         .then((res) => {
           if (res.data.acknowledged) {
             Swal.fire({

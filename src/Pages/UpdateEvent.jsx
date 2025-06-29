@@ -33,7 +33,7 @@ const UpdateEvent = () => {
         const updateEvent = Object.fromEntries(formData.entries());
         try {
           axios
-            .put(`http://localhost:5000/event/update/${id}`, updateEvent)
+            .put(`https://fitarena-server.vercel.app/event/update/${id}`, updateEvent)
             .then((res) => {
               if(res.data.modifiedCount){
                 Swal.fire("Saved!", "", "success");

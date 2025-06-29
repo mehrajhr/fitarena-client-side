@@ -9,7 +9,7 @@ import FeaturedEvents from "../Components/FeaturedEvents";
 const Home = () => {
   const [events , setEvents] = useState([]);
   useEffect(() =>{
-    axios.get('http://localhost:5000/events/all')
+    axios.get('https://fitarena-server.vercel.app/events/all')
     .then(res => setEvents(res.data));
   },[])
   return (

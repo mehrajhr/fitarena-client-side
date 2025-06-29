@@ -28,7 +28,7 @@ const ManageEvents = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         try {
-          axios.delete(`http://localhost:5000/event/${id}`).then((res) => {
+          axios.delete(`https://fitarena-server.vercel.app/event/${id}`).then((res) => {
             if (res.data.deletedCount) {
               Swal.fire({
                 title: "Deleted!",

@@ -14,6 +14,7 @@ import MyBooking from '../Pages/MyBooking.jsx';
 import ManageEvents from '../Pages/ManageEvents.jsx';
 import EventDetails from '../Pages/EventDetails.jsx';
 import UpdateEvent from '../Pages/UpdateEvent.jsx';
+import NotFound from '../Pages/NotFound.jsx';
 
 const router = createBrowserRouter([
   {
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
         }
     ]
   },
+  {
+    path: '/*',
+    Component: NotFound
+  }
 ]);
 
 export default router;

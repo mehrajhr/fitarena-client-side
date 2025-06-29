@@ -6,7 +6,7 @@ import axios from "axios";
 const AllEvents = () => {
   const [events, setEvents] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:5000/events/all").then((res) => {
+    axios.get("https://fitarena-server.vercel.app/events/all").then((res) => {
       setEvents(res.data);
     });
   }, []);

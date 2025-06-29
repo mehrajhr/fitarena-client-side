@@ -46,7 +46,7 @@ const EventDetails = () => {
       bookingTime: new Date(),
     };
     try {
-      axios.post("http://localhost:5000/booking", bookingData).then((res) => {
+      axios.post("https://fitarena-server.vercel.app/booking", bookingData).then((res) => {
         if (res.data.acknowledged) {
           Swal.fire({
             position: "top-end",
@@ -70,7 +70,7 @@ const EventDetails = () => {
     try {
       axios
         .delete(
-          `http://localhost:5000/booking?eventId=${event._id}&user_email=${user.email}`
+          `https://fitarena-server.vercel.app/booking?eventId=${event._id}&user_email=${user.email}`
         )
         .then((res) => {
           if (res.data.acknowledged) {

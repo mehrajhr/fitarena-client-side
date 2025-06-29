@@ -3,7 +3,7 @@
 // import UseAuth from "./UseAuth";
 
 // const axiosInstance = axios.create({
-//   baseURL: "http://localhost:5000/",
+//   baseURL: "https://fitarena-server.vercel.app/",
 // });
 
 // const UseAxiosSecure = () => {
@@ -46,7 +46,7 @@ import React, { useEffect } from "react";
 import UseAuth from "./UseAuth";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000/",
+  baseURL: "https://fitarena-server.vercel.app/",
 });
 
 const UseAxiosSecure = () => {

@@ -31,7 +31,7 @@ const MyBooking = () => {
         try {
           axios
             .delete(
-              `http://localhost:5000/booking?eventId=${eventId}&user_email=${user.email}`
+              `https://fitarena-server.vercel.app/booking?eventId=${eventId}&user_email=${user.email}`
             )
             .then((res) => {
               if (res.data.acknowledged) {
