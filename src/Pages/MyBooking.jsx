@@ -6,16 +6,23 @@ import { MdLocationPin } from "react-icons/md";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
 import UseAxiosSecure from "../Hooks/UseAxiosSecure";
+import Loading from "../Components/Loading";
 
 const MyBooking = () => {
   const { user } = UseAuth();
   const [bookings, setBookings] = useState([]);
+  const [loading , setLoading] = useState(true);
   const axiosSecure = UseAxiosSecure();
   useEffect(() => {
     axiosSecure.get(`booking?email=${user.email}`).then((res) => {
       setBookings(res.data);
+      setLoading(false);
     });
   }, [user, axiosSecure]);
+
+  if(loading){
+    return <Loading></Loading>
+  }
 
   const handleCancelBooking = (id, eventId) => {
     Swal.fire({

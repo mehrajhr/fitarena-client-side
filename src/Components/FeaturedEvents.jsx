@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { motion, scale } from "motion/react";
 import EventsCard from "./EventsCard";
+import Loading from "./Loading";
 
 const FeaturedEvents = ({ events }) => {
   const [featuredEvents, setFeaturedEvents] = useState([]);
+  const [loading , setLoading] = useState(true);
   useEffect(() => {
     setFeaturedEvents(events.slice(0, 6));
+    setLoading(false);
   }, [events]);
-  console.log(featuredEvents);
+  // console.log(featuredEvents);
+  if(loading){
+    return <Loading></Loading>
+  }
   return (
     <section className="py-16 bg-white">
       <motion.div

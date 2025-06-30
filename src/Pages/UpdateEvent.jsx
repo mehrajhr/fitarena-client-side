@@ -5,15 +5,18 @@ import { Link, useParams } from "react-router";
 import axios from "axios";
 import Swal from "sweetalert2";
 import UseAxiosSecure from "../Hooks/UseAxiosSecure";
+import Loading from "../Components/Loading";
 
 const UpdateEvent = () => {
   const { user } = UseAuth();
   const { id } = useParams();
   const axiosSecue = UseAxiosSecure();
   const [event, setEvent] = useState([]);
+  const [loading , setLoading] = useState(true);
   useEffect(() => {
     axiosSecue.get(`event/${id}`).then((res) => {
       setEvent(res.data);
+      setLoading(false);
     });
   }, [id ,axiosSecue]);
 
@@ -54,6 +57,11 @@ const UpdateEvent = () => {
       }
     });
   };
+
+  if(loading){
+    return <Loading></Loading>
+  }
+
   return (
     <div className="max-w-3xl mx-auto p-6 bg-white shadow-xl rounded-xl mt-10">
       <motion.h1

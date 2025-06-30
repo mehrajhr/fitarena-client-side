@@ -8,18 +8,21 @@ import UseAuth from "../Hooks/UseAuth";
 import axios from "axios";
 import Swal from "sweetalert2";
 import UseAxiosSecure from "../Hooks/UseAxiosSecure";
+import Loading from "../Components/Loading";
 
 const EventDetails = () => {
   const [event , setEvent] = useState({});
   const {id} = useParams();
   const axiosSecue = UseAxiosSecure();
   const { user } = UseAuth();
+  const [loading , setLoading] = useState(true);
   const [isTrue, setIsTrue] = useState(false);
 
   useEffect(() =>{
     axiosSecue.get(`/event/${id}`)
     .then(res => {
       setEvent(res.data);
+      setLoading(false);
     })
   },[id, axiosSecue])
 
@@ -92,6 +95,10 @@ const EventDetails = () => {
       });
     }
   };
+
+  if(loading){
+    return <Loading></Loading>
+  }
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">

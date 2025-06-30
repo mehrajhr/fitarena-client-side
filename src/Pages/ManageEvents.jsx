@@ -4,15 +4,18 @@ import UseAuth from "../Hooks/UseAuth";
 import ManageEventCard from "./ManageEventCard";
 import Swal from "sweetalert2";
 import UseAxiosSecure from "../Hooks/UseAxiosSecure";
+import Loading from "../Components/Loading";
 
 const ManageEvents = () => {
   const { user } = UseAuth();
   const [events, setEvents] = useState([]);
   const axiosSecure = UseAxiosSecure();
+  const[loading , setLoading] = useState(true);
   useEffect(() => {
     axiosSecure.get(`events/manage?email=${user.email}`)
       .then((res) => {
         setEvents(res.data);
+        setLoading(false);
       });
   }, [user , axiosSecure]);
 
@@ -50,6 +53,10 @@ const ManageEvents = () => {
     });
   };
 
+  if(loading){
+    return <Loading></Loading>
+  }
+  
   return (
     <div className="p-5 bg-base-200 md:p-10 max-w-7xl mx-auto">
       <h1 className="text-3xl text-center text-blue-950 font-bold mb-6">
