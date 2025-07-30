@@ -5,13 +5,6 @@ import { getAuth } from "firebase/auth";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 
-//   apiKey: "AIzaSyAwCkrnF71sN0KDjqqsRapof7QSW7CigVA",
-//   authDomain: "fit-arena-6de23.firebaseapp.com",
-//   projectId: "fit-arena-6de23",
-//   storageBucket: "fit-arena-6de23.firebasestorage.app",
-//   messagingSenderId: "983999698860",
-//   appId: "1:983999698860:web:0a9414a19c6bc8e75c4c09"
-
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_apiKey,
