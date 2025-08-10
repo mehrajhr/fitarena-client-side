@@ -7,6 +7,7 @@ import PopularSports from "./PopularSports";
 import axios from "axios";
 import FeaturedEvents from "../Components/FeaturedEvents";
 import TipsAndTraining from "../Components/TipsAndTraining";
+import Membership from "../Components/Membership";
 const Home = () => {
   const [events , setEvents] = useState([]);
   useEffect(() =>{
@@ -21,6 +22,7 @@ const Home = () => {
       <Testimonials></Testimonials>
       <PopularSports></PopularSports>
       <TipsAndTraining></TipsAndTraining>
+      <Membership></Membership>
     </div>
   );
 };
