@@ -10,7 +10,7 @@ const PopularSports = () => {
   ];
 
   return (
-    <section className="bg-base-200 py-16 px-6">
+    <section className="bg-gray-100 py-16 px-6">
       <div className="max-w-6xl mx-auto">
         <motion.h2 initial={{scale : 0}} animate = {{ scale : 1 , transition: {duration : 4}}} className="text-4xl font-bold mb-10 text-[#251d64] text-center">
           Most Popular Sports

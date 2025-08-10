@@ -6,6 +6,7 @@ import Testimonials from "./Testimonials";
 import PopularSports from "./PopularSports";
 import axios from "axios";
 import FeaturedEvents from "../Components/FeaturedEvents";
+import TipsAndTraining from "../Components/TipsAndTraining";
 const Home = () => {
   const [events , setEvents] = useState([]);
   useEffect(() =>{
@@ -19,6 +20,7 @@ const Home = () => {
       <Banner></Banner>
       <Testimonials></Testimonials>
       <PopularSports></PopularSports>
+      <TipsAndTraining></TipsAndTraining>
     </div>
   );
 };
